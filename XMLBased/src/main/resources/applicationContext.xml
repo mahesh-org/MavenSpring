@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Example 1 -->
+    <!-- Testing both setter and constructor injection example-->
+    <bean id="circle" class="org.mahesh.bean.Circle">
+        <property name="type" value="Full"/>
+        <property name="degree" value="300"/>
+
+        <!--<constructor-arg type="String" value="Half" />
+        <constructor-arg type="int" value="180" />-->
+    </bean>
+    <!-- End of Example 1 -->
+
+    <!-- Example 2 (Inner Beans)-->
+    <bean id="triangleInner" class="org.mahesh.bean.Triangle">
+        <property name="pointA">
+            <!-- This is the concept of inner bean, no need to specify id here-->
+            <bean class="org.mahesh.bean.Point">
+                <property name="x" value="1"/>
+                <property name="y" value="1" />
+            </bean>
+        </property>
+    </bean>
+
+    <!-- Example 3 (With Threee different point-->
+    <bean id="triangle3DifferntPoints" class="org.mahesh.bean.Triangle">
+        <property name="pointA" ref="point1"/>
+        <property name="pointB" ref="point2"/>
+        <property name="pointC" ref="point3"/>
+    </bean>
+
+    <!-- alias (Good pratice to use Id's-->
+    <alias name="triangle" alias="triangleAlias"/>
+
+    <!-- Example 3 (Initaillizing collection)-->
+    <!--<bean id="triangleCollection" class="org.mahesh.bean.Triangle">-->
+        <!--<property name="points">-->
+            <!--<list>-->
+                <!--<ref bean="point1"/>-->
+                <!--<ref bean="point2"/>-->
+                <!--<ref bean="point3"/>-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <bean id="point1" class="org.mahesh.bean.Point">
+        <property name="x" value="0"/>
+        <property name="y" value="0" />
+    </bean>
+
+    <bean id="point2" class="org.mahesh.bean.Point">
+        <property name="x" value="-20"/>
+        <property name="y" value="0" />
+    </bean>
+    <bean id="point3" class="org.mahesh.bean.Point">
+        <property name="x" value="20"/>
+        <property name="y" value="0" />
+    </bean>
+
+    <!-- Example 4 Autowire byName and Type(default)-->
+    <bean id="triangleAutowireByName" class="org.mahesh.bean.Triangle" autowire="byName">
+
+    </bean>
+
+    <!-- Example 5 Autowire byConstructor-->
+    <bean id="triangleAutowireByConstrutor" class="org.mahesh.bean.Triangle" autowire="constructor">
+
+    </bean>
+
+    <!-- Example 6 Bean scopes
+        1) SingleTone   -   default -   only once instance of the bean will be created- only once per Spring container
+        2) prototype - New bean will be created with every request of reference
+        3) Web-aware context bean (basically for the jsp's)
+            request
+            session
+            global session
+    -->
+    <!-- Example 6 Autowire byName and Type(default)-->
+    <bean id="triangleBeanScope" class="org.mahesh.bean.Triangle" autowire="byName" scope="prototype" >
+
+    </bean>
+
+    <!-- Example 7 ApplicationContextAware-->
+    <bean id="triangleAwareExp" class="org.mahesh.bean.Triangle" autowire="byName">
+
+    </bean>
+
+    <!-- Example 8 Bean definition inheritance -->
+    <bean id="parentTriangle" class="org.mahesh.bean.Triangle">
+        <property name="pointA" ref="pointA" />
+    </bean>
+    <bean id="triangleInheritance" class="org.mahesh.bean.Triangle" parent="parentTriangle">
+        <property name="pointB" ref="pointB"/>
+        <property name="pointC" ref="pointC"/>
+    </bean>
+    <!--<bean id="parentTriangle" class="org.mahesh.bean.Triangle">
+        <property name="points" >
+            <list>
+                <ref bean="pointA"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="triangleInheritanceCollection" class="org.mahesh.bean.Triangle" parent="parentTriangle">
+        <property name="points" >
+            <list merge="true">
+                <ref bean="pointB"/>
+                <ref bean="pointC"/>
+            </list>
+        </property>
+    </bean>-->
+    <!-- End of Example 8 -->
+
+
+    <bean id="pointA" class="org.mahesh.bean.Point">
+        <property name="x" value="0"/>
+        <property name="y" value="0" />
+    </bean>
+
+    <bean id="pointB" class="org.mahesh.bean.Point">
+        <property name="x" value="-20"/>
+        <property name="y" value="0" />
+    </bean>
+    <bean id="pointC" class="org.mahesh.bean.Point">
+        <property name="x" value="20"/>
+        <property name="y" value="0" />
+    </bean>
+
+
+
+</beans>
