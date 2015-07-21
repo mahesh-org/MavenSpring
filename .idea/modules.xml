@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/AnnotationBased/AnnotationBased.iml" filepath="$PROJECT_DIR$/AnnotationBased/AnnotationBased.iml" />
       <module fileurl="file://$PROJECT_DIR$/MavenSpring.iml" filepath="$PROJECT_DIR$/MavenSpring.iml" />
       <module fileurl="file://$PROJECT_DIR$/XMLBased/XMLBased.iml" filepath="$PROJECT_DIR$/XMLBased/XMLBased.iml" />
     </modules>

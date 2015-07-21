@@ -1,6 +1,7 @@
 package org.mahesh.main;
 
 import org.mahesh.bean.Circle;
+import org.mahesh.bean.Shape;
 import org.mahesh.bean.Triangle;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
@@ -32,8 +33,10 @@ public class Main {
         //Triangle triangle = (Triangle) context.getBean("triangleInheritance");
 
         AbstractApplicationContext context = new ClassPathXmlApplicationContext("classpath*:applicationContext.xml");
-        context.registerShutdownHook();
-        Triangle triangle = (Triangle) context.getBean("triangleInheritance");
-        triangle.draw();
+        //context.registerShutdownHook();
+        //Triangle triangle = (Triangle) context.getBean("triangleInheritance");
+
+        Shape shape = (Shape) context.getBean("circleInterface");
+        shape.draw();
     }
 }

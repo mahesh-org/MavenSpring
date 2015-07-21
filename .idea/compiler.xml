@@ -24,8 +24,16 @@
         <processorPath useClasspath="true" />
         <module name="XMLBased" />
       </profile>
+      <profile default="false" name="Annotation profile for AnnotationBased" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="AnnotationBased" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="AnnotationBased" target="1.7" />
       <module name="MavenSpring" target="1.7" />
       <module name="XMLBased" target="1.7" />
     </bytecodeTargetLevel>

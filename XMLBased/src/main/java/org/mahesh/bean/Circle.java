@@ -3,7 +3,7 @@ package org.mahesh.bean;
 /**
  * Created by maheshwar on 19-Jul-15.
  */
-public class Circle {
+public class Circle implements Shape {
     private String type;
     private int degree;
 
