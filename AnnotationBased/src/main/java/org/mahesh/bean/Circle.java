@@ -3,6 +3,7 @@ package org.mahesh.bean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Required;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -11,6 +12,7 @@ import javax.annotation.Resource;
 /**
  * Created by maheshwar on 19-Jul-15.
  */
+@Component
 public class Circle implements Shape {
 
     private Point center;
@@ -23,7 +25,7 @@ public class Circle implements Shape {
     //@Required
     /*@Autowired
     @Qualifier("circleReleated")*/
-    @Resource
+    @Resource(name = "center")
     public void setCenter(Point center) {
         this.center = center;
     }

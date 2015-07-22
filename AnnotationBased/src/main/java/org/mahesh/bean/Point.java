@@ -1,8 +1,11 @@
 package org.mahesh.bean;
 
+import org.springframework.stereotype.Component;
+
 /**
  * Created by maheshwar on 19-Jul-15.
  */
+@Component(value = "center")
 public class Point {
     private int x;
     private int y;
