@@ -11,17 +11,17 @@ public class Circle implements Shape {
 
     }
     Circle(String arg1) {
-        System.out.println("arg1 "+ arg1);
+        System.out.println("arg1: "+ arg1);
         this.type = arg1;
     }
 
     Circle(int arg2) {
-        System.out.println("arg2 "+ arg2);
+        System.out.println("arg2: "+ arg2);
         this.degree = arg2;
     }
 
     Circle(String arg1, int arg2) {
-        System.out.println("arg1 "+ arg1 + " arg2 "+ arg2);
+        System.out.println("arg1: "+ arg1 + " arg2: "+ arg2);
         this.type = arg1;
         this.degree = arg2;
     }

@@ -17,25 +17,41 @@
       <profile default="true" name="Default" enabled="false">
         <processorPath useClasspath="true" />
       </profile>
-      <profile default="false" name="Annotation profile for XMLBased" enabled="true">
+      <profile default="false" name="Annotation profile for annotationBased" enabled="true">
         <sourceOutputDir name="target\generated-sources\annotations" />
         <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="XMLBased" />
+        <module name="annotationBased" />
       </profile>
-      <profile default="false" name="Annotation profile for AnnotationBased" enabled="true">
+      <profile default="false" name="Annotation profile for xmlBased" enabled="true">
         <sourceOutputDir name="target\generated-sources\annotations" />
         <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="AnnotationBased" />
+        <module name="xmlBased" />
+      </profile>
+      <profile default="false" name="Annotation profile for SpringJDBC" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="SpringJDBC" />
+      </profile>
+      <profile default="false" name="Annotation profile for SpringAOP" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="SpringAOP" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="AnnotationBased" target="1.7" />
+      <module name="annotationBased" target="1.7" />
       <module name="MavenSpring" target="1.7" />
-      <module name="XMLBased" target="1.7" />
+      <module name="SpringAOP" target="1.7" />
+      <module name="SpringJDBC" target="1.7" />
+      <module name="xmlBased" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

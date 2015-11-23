@@ -5,7 +5,8 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- Example 1 -->
-    <!-- Testing both setter and constructor injection example-->
+    <!-- Testing both setter and constructor injection example. In case both setter and construction injection applied, then construction injection will be overridden by Setter.
+         Bcz Constructor injection will happen at object creation time, and setter after objection. Hence Setter will overrides.-->
     <bean id="circle" class="org.mahesh.bean.Circle">
         <property name="type" value="Full"/>
         <property name="degree" value="300"/>
@@ -26,7 +27,7 @@
         </property>
     </bean>
 
-    <!-- Example 3 (With Threee different point-->
+    <!-- Example 3 (With Threee different point) (Using Ref)-->
     <bean id="triangle3DifferntPoints" class="org.mahesh.bean.Triangle">
         <property name="pointA" ref="point1"/>
         <property name="pointB" ref="point2"/>
@@ -34,32 +35,54 @@
     </bean>
 
     <!-- alias (Good pratice to use Id's-->
-    <alias name="triangle" alias="triangleAlias"/>
+    <alias name="triangleInner" alias="triangleAlias"/>
 
-    <!-- Example 3 (Initaillizing collection)-->
-    <!--<bean id="triangleCollection" class="org.mahesh.bean.Triangle">-->
-        <!--<property name="points">-->
-            <!--<list>-->
-                <!--<ref bean="point1"/>-->
-                <!--<ref bean="point2"/>-->
-                <!--<ref bean="point3"/>-->
-            <!--</list>-->
-        <!--</property>-->
-    <!--</bean>-->
+    <!-- Example 3 (Initializing collection) List, Set, Map and Properties are the four types of collections supported by Spring
+    List - <list></list> - duplicates value allowed
+    Set  - <set></set>   - np duplicates value allowed
+    Map  - <map><entry key="key1"><value>Oracle</value></entry></map>  - key value pair-->
+    <!--<bean id="triangleCollection" class="org.mahesh.bean.Triangle">
+        <property name="points">
+            <list>
+                <ref bean="point1"/>
+                <ref bean="point2"/>
+                <ref bean="point3"/>
+            </list>
+        </property>
+    </bean>-->
 
     <bean id="point1" class="org.mahesh.bean.Point">
-        <property name="x" value="0"/>
-        <property name="y" value="0" />
+        <property name="x" value="10"/>
+        <property name="y" value="11" />
     </bean>
 
     <bean id="point2" class="org.mahesh.bean.Point">
-        <property name="x" value="-20"/>
-        <property name="y" value="0" />
+        <property name="x" value="20"/>
+        <property name="y" value="21" />
     </bean>
     <bean id="point3" class="org.mahesh.bean.Point">
-        <property name="x" value="20"/>
-        <property name="y" value="0" />
+        <property name="x" value="30"/>
+        <property name="y" value="31" />
     </bean>
+
+    <!--
+        Setter Injection                                    Constructor Injection
+    1) Partial injection values can be possible           As its CI, partial injection not possible
+    2) SI will override the CI                            But Constructor injection can not override the setter injection values.
+    3) If we have more variables in a class, like around  In this case CI is better, the initialization of all variables can be done
+       20, then then number of method count increases      in a single constructor.
+    4) SI makes bean class object as Mutable              CI makes the bean class object as Immutable
+    *************************************************************************************************
+    -->
+
+    <!--
+    Autowire are only supported if the dependencies are in the form of Objects only.
+    byName -  Based on the Id is matching with the property name to be wired. If no Id found, remains un-wired. No Exception will be thrown.
+    byType - Based on the Type(Object/Class name). If a bean found with class as property type then that class object will be injected into that property by calling setter injection. not found remains same, no exception will be thrown.
+    constructor - by constructor is same as byType, but uses the constructor for initialization.
+    autodetect - first will works as Spring Autowiring constructor if not then works as Spring Autowiring byType. Remember setter overriding :)
+    none -
+    -->
 
     <!-- Example 4 Autowire byName and Type(default)-->
     <bean id="triangleAutowireByName" class="org.mahesh.bean.Triangle" autowire="byName">
@@ -70,6 +93,11 @@
     <bean id="triangleAutowireByConstrutor" class="org.mahesh.bean.Triangle" autowire="constructor">
 
     </bean>
+
+    <!-- Example 5.1 Autowire autodetect, not wokring
+    <bean id="triangleAutowireautodetect" class="org.mahesh.bean.Triangle" autowire="autodetect">
+
+    </bean>-->
 
     <!-- Example 6 Bean scopes
         1) SingleTone   -   default -   only once instance of the bean will be created- only once per Spring container
@@ -139,7 +167,5 @@
         <property name="x" value="20"/>
         <property name="y" value="0" />
     </bean>
-
-
 
 </beans>

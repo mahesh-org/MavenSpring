@@ -16,7 +16,7 @@ import org.springframework.core.io.FileSystemResource;
 public class Main {
 
     public static void main(String[] args) {
-        //BeanFactory beanFactory = new XmlBeanFactory(new FileSystemResource("E:\\git_repo\\MavenSpring\\XMLBased\\src\\main\\resources\\applicationContext.xml"));
+        BeanFactory beanFactory = new XmlBeanFactory(new FileSystemResource("C:\\Mahesh\\MyProjects\\MavenSpring\\XMLBased\\src\\main\\resources\\applicationContext.xml"));
         /*Circle circle = (Circle) beanFactory.getBean("circle");
         circle.draw();*/
 
@@ -24,7 +24,7 @@ public class Main {
         //Triangle triangle = (Triangle) beanFactory.getBean("triangleInner");
         //Triangle triangle = (Triangle) beanFactory.getBean("triangle3DifferntPoints");
         //Triangle triangle = (Triangle) beanFactory.getBean("triangleCollection");
-        //Triangle triangle = (Triangle) beanFactory.getBean("triangleAutowireByName");
+        Triangle triangle = (Triangle) beanFactory.getBean("triangleAutowireByName");
         //Triangle triangle = (Triangle) beanFactory.getBean("triangleAutowireByConstrutor");
 
         //ApplicationContext context = new ClassPathXmlApplicationContext("classpath*:applicationContext.xml");
@@ -32,11 +32,12 @@ public class Main {
         //Triangle triangle = (Triangle) context.getBean("triangleAwareExp");
         //Triangle triangle = (Triangle) context.getBean("triangleInheritance");
 
-        AbstractApplicationContext context = new ClassPathXmlApplicationContext("classpath*:applicationContext.xml");
+        //AbstractApplicationContext context = new ClassPathXmlApplicationContext("classpath*:applicationContext.xml");
         //context.registerShutdownHook();
         //Triangle triangle = (Triangle) context.getBean("triangleInheritance");
+        triangle.draw();
 
-        Shape shape = (Shape) context.getBean("circleInterface");
-        shape.draw();
+        /*Shape shape = (Shape) context.getBean("circleInterface");
+        shape.draw();*/
     }
 }
