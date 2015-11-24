@@ -1,6 +1,7 @@
 package org.mahesh.bean;
 
 /**
+ *
  * Created by maheshwar on 19-Jul-15.
  */
 public class Point {
